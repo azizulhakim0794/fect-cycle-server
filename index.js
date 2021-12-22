@@ -1,10 +1,14 @@
-const express = require('express')
+const express = require('express');
+const bodyParser = require('body-parser')
 const cors = require('cors')
 require('dotenv').config()
-const app = express()
+const app = express();
+app.use(bodyParser.json())
 app.use(cors());
 const port = 5000
-const hotelRouter = require('./routes/allProduct')
+const allProductRouter = require('./routes/allProduct')
+const addToCartRouter = require('./routes/addToCartProducts')
+const userOrderedRouter = require('./routes/userOrdered')
 
     //  app.get('/hotel/:id', (req, res)=>{
     //   const id = req.params.id
@@ -18,5 +22,7 @@ const hotelRouter = require('./routes/allProduct')
       res.send('hello world')
     })
 
-  app.use('/product',hotelRouter)
+  app.use('/product',allProductRouter)
+  app.use('/addToCart',addToCartRouter)
+  app.use('/userOrderedProducts',userOrderedRouter)
   app.listen(process.env.PORT || port)

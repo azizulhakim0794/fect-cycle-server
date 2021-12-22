@@ -20,6 +20,7 @@ client.connect(err => {
     })
     router.get('/:id',(req, res ,next) =>{
         const id = req.params.id
+        // console.log(id)
           collection.find({_id:ObjectId(id)})
           .toArray((err, document) => {
               res.send(document[0])
