@@ -23,8 +23,7 @@ client.connect(err => {
     const quantity = req.body.quantity
     const email = req.body.email
     const date = req.body.date
-    const paymentID = req.body.paymentId,
-    const date = req.body.date
+    const paymentID = req.body.paymentId
     UseBuyProductCollection.insertOne({id:id, name:name, details:details, category:category,price:price,img:img,quantity:quantity,email:email,date:date,paymentID:paymentID,date:date})
       .then(result => {
         res.status(201).send(result.insertedCount > 0);
